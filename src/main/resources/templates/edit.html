@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<div>
+    <form method="post">
+        <input type="number" name="id" placeholder="id">
+        <input type="text" name="username" placeholder="Enter a new username">
+        <input type="text" name="password" placeholder="Enter a new password">
+        <input type="text" name="email" placeholder="Enter a new e-mail">
+        <button type="submit">Edit</button>
+    </form>
+</div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
