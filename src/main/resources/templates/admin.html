@@ -1,23 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Admin</title>
 </head>
 <body>
 <div>
-    <a href="/admin/add">Add new user</a>
-</div>
-<div>
-    <a href="/admin/users">Show all users</a>
-</div>
-<div>
-    <a href="/admin/edit">Edit user</a>
-</div>
-<div>
-    <a href="/admin/delete">Delete user</a>
+    <h1>Users</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>E-Mail</th>
+            <th>Role</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usr : ${users}">
+            <td th:text="${usr.getId()}">Id</td>
+            <td th:text="${usr.getUsername()}">username</td>
+            <td th:text="${usr.getPassword()}">password</td>
+            <td th:text="${usr.getEmail()}">email</td>
+            <td><span th:each="roles : ${usr.getRoles()}" th:text="${roles.name() + ' '}"></span></td>
+            <td>
+                <a href="#" th:href="@{/admin/edit/{username}(username=${usr.getUsername()})}">Edit</a>
+            </td>
+            <td>
+                <a href="#" th:href="@{/admin/delete/{username}(username=${usr.getUsername()})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
+
+<div>
+    <a href="/admin/add">Add new user</a>
+</div>
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>

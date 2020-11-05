@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Delete user</title>
 </head>
 <body>
 <form method="post">
-    <input type="number" name="id" placeholder="Enter user's id">
     <button type="submit">Delete</button>
 </form>
+
+<p th:text="${'Id: ' + user.getId()}"></p>
+<p th:text="${'Nickname: ' + user.getUsername()}"></p>
+<p th:text="${'Password: ' + user.getPassword()}"></p>
+<p th:text="${'E-Mail: ' + user.getEmail()}"></p>
+
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
